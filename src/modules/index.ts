@@ -22,6 +22,12 @@ sequelize = new Sequelize(
     ...config as any, logging: env === "production" ? false : console.log, define: {
       charset: "utf8mb4",
       collate: "utf8mb4_general_ci",
+    },
+      dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
     }
   }
 );
