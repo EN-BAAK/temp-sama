@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-background2: var(--background2);
+  --color-card: var(--card);
+
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-second: var(--second);
+
+  --color-reversed: var(--reversed);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-cairo);
+  --font-heading: var(--font-ibm-plex-arabic);
+}
+
+:root {
+  --primary: #4338CA;
+  --accent: #6366F1;
+  --second: #0F172A;
+
+  --background: #F8FAFC;
+  --background2: #F1F5F9;
+  --card: #FFFFFF;
+
+  --reversed: #ffffff;
+  --text: #1E293B;
+  --muted: #262626;
+
+  --success: #16A34A;
+  --danger: #DC2626;
+  --warning: #F59E0B;
+  --info: #0284C7;
+
+  --border: #D8E1EB;
+  --input: #FFFFFF;
+  --ring: #6366F1;
+  --radius: 0.75rem;
+
+  --foreground: #1E293B;
+  --primary-foreground: #FFFFFF;
+  --accent-foreground: #FFFFFF;
+  --muted-foreground: #64748B;
+  --card-foreground: #1E293B;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E293B;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #1E293B;
+  --destructive: #DC2626;
+}
+
+.dark {
+  --background: #0F172A;
+  --background2: #1E293B;
+  --card: #1E293B;
+
+  --primary: #6366F1;
+  --accent: #818CF8;
+  --secondary: #818CF8;
+
+  --reversed: #FFFFFF;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+
+  --success: #22C55E;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --info: #38BDF8;
+
+  --border: #334155;
+  --input: #1E293B;
+  --ring: #818CF8;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--background);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Hide Spin Buttons on Number Inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  resize: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-ibm-plex-arabic);
+  font-weight: 700;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-text font-sans;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  label {
+    @apply block text-sm font-medium mb-2;
+    color: var(--text);
+  }
+
+  input,
+  textarea,
+  select {
+    @apply w-full px-4 py-3 rounded-xl border duration-300 outline-none;
+    background: var(--card);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: var(--accent);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgb(99 102 241 / 20%);
+  }
+
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .card-ui {
+    @apply rounded-2xl border p-6;
+    background: var(--card);
+    border-color: var(--border);
+    box-shadow: 0 10px 30px rgb(15 23 42 / 6%);
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is server side of Sama project",
+  "main": "samaServer.js",
+  "engines": {
+    "node": ">=22.0.0 <25"
+  },
+  "scripts": {
+    "dev": "nodemon samaServer.ts",
+    "dev:ts": "ts-node samaServer.ts",
+    "build": "tsc",
+    "start": "node dist/samaServer.js",
+    "db:init:dev": "ts-node initializeDB.ts",
+    "db:init": "node dist/initializeDB.js",
+    "prepare": "npm run clean && npm run build",
+    "clean": "rm -rf dist"
+  },
+  "author": "Bassel AL-Medenie",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.6.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "ms": "^2.1.3",
+    "multer": "^2.0.2",
+    "next": "^16.2.7",
+    "nodemailer": "^9.0.5",
+    "pg": "^8.22.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/ms": "^2.1.0",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.13.3",
+    "@types/nodemailer": "^8.0.1",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3"
+  }
+}
